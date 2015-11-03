@@ -18,6 +18,7 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
      */
     public Pr8Tarea2Frame() {
         initComponents();
+        LoginButton.setEnabled(false);
     }
 
     /**
@@ -32,15 +33,15 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
         RegisterDialog = new javax.swing.JDialog();
         Pass1Label = new javax.swing.JLabel();
         Pass2Label = new javax.swing.JLabel();
-        Pass1TextField = new javax.swing.JTextField();
-        Pass2TextField = new javax.swing.JTextField();
         RegisterAceptarButton = new javax.swing.JButton();
         RegisterCancelarButton = new javax.swing.JButton();
+        Pass1Field = new javax.swing.JPasswordField();
+        Pass2Field = new javax.swing.JPasswordField();
         LoginDialog = new javax.swing.JDialog();
         PasswordLabel = new javax.swing.JLabel();
-        PasswordTextField1 = new javax.swing.JTextField();
         LoginAceptarButton = new javax.swing.JButton();
         LoginCancelarButton1 = new javax.swing.JButton();
+        PasswordField = new javax.swing.JPasswordField();
         Autor = new javax.swing.JLabel();
         AccionesPanel = new javax.swing.JPanel();
         LoginButton = new javax.swing.JButton();
@@ -52,17 +53,32 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
         RegTextField = new javax.swing.JTextField();
         LogTextField = new javax.swing.JTextField();
 
+        RegisterDialog.setMinimumSize(new java.awt.Dimension(300, 200));
+        RegisterDialog.setPreferredSize(new java.awt.Dimension(400, 200));
+
         Pass1Label.setText("Set Password:");
 
         Pass2Label.setText("Repeat Password:");
 
-        Pass1TextField.setText(" ");
-
-        Pass2TextField.setText(" ");
-
         RegisterAceptarButton.setText("Aceptar");
+        RegisterAceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterAceptarButtonActionPerformed(evt);
+            }
+        });
 
         RegisterCancelarButton.setText("Cancelar");
+        RegisterCancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterCancelarButtonActionPerformed(evt);
+            }
+        });
+
+        Pass1Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Pass1FieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RegisterDialogLayout = new javax.swing.GroupLayout(RegisterDialog.getContentPane());
         RegisterDialog.getContentPane().setLayout(RegisterDialogLayout);
@@ -70,20 +86,21 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
             RegisterDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RegisterDialogLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(RegisterDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(RegisterDialogLayout.createSequentialGroup()
-                        .addComponent(Pass1Label)
-                        .addGap(37, 37, 37)
-                        .addComponent(Pass1TextField))
+                .addGroup(RegisterDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(RegisterDialogLayout.createSequentialGroup()
                         .addComponent(RegisterAceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(RegisterCancelarButton))
+                        .addComponent(RegisterCancelarButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(RegisterDialogLayout.createSequentialGroup()
-                        .addComponent(Pass2Label)
-                        .addGap(18, 18, 18)
-                        .addComponent(Pass2TextField)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(RegisterDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Pass2Label)
+                            .addComponent(Pass1Label))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(RegisterDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Pass2Field)
+                            .addComponent(Pass1Field))))
+                .addContainerGap())
         );
         RegisterDialogLayout.setVerticalGroup(
             RegisterDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,25 +108,35 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(RegisterDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Pass1Label)
-                    .addComponent(Pass1TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(Pass1Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(RegisterDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Pass2Label)
-                    .addComponent(Pass2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                    .addComponent(Pass2Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(RegisterDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RegisterAceptarButton)
                     .addComponent(RegisterCancelarButton))
                 .addContainerGap())
         );
 
+        LoginDialog.setMinimumSize(new java.awt.Dimension(200, 100));
+
         PasswordLabel.setText("Password:");
 
-        PasswordTextField1.setText(" ");
-
         LoginAceptarButton.setText("Aceptar");
+        LoginAceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginAceptarButtonActionPerformed(evt);
+            }
+        });
 
         LoginCancelarButton1.setText("Cancelar");
+        LoginCancelarButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginCancelarButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LoginDialogLayout = new javax.swing.GroupLayout(LoginDialog.getContentPane());
         LoginDialog.getContentPane().setLayout(LoginDialogLayout);
@@ -120,8 +147,8 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
                 .addGroup(LoginDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(LoginDialogLayout.createSequentialGroup()
                         .addComponent(PasswordLabel)
-                        .addGap(37, 37, 37)
-                        .addComponent(PasswordTextField1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(PasswordField))
                     .addGroup(LoginDialogLayout.createSequentialGroup()
                         .addComponent(LoginAceptarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -134,7 +161,7 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(LoginDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PasswordLabel)
-                    .addComponent(PasswordTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(LoginDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LoginAceptarButton)
@@ -155,8 +182,18 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
         AccionesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Acciones"));
 
         LoginButton.setText("Login");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginButtonActionPerformed(evt);
+            }
+        });
 
         RegisterButton.setText("Register");
+        RegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterButtonActionPerformed(evt);
+            }
+        });
 
         ExitButton.setText("Exit");
         ExitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -193,9 +230,9 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
 
         LogLabel.setText("LogIn:");
 
-        RegTextField.setText("SI/NO");
+        RegTextField.setText("NO");
 
-        LogTextField.setText("SI/NO");
+        LogTextField.setText("NO");
 
         javax.swing.GroupLayout EstadoPanelLayout = new javax.swing.GroupLayout(EstadoPanel);
         EstadoPanel.setLayout(EstadoPanelLayout);
@@ -240,7 +277,7 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
                 .addComponent(AccionesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(EstadoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,6 +300,69 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
         showCloseDialog();
     }//GEN-LAST:event_ExitButtonActionPerformed
+
+    private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
+        RegisterDialog.setVisible(true);
+    }//GEN-LAST:event_RegisterButtonActionPerformed
+
+    private void RegisterCancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterCancelarButtonActionPerformed
+        RegisterDialog.setVisible(false);
+    }//GEN-LAST:event_RegisterCancelarButtonActionPerformed
+
+    private void RegisterAceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterAceptarButtonActionPerformed
+        pass1 = String.valueOf(Pass1Field.getPassword());
+        String pass2 = String.valueOf(Pass2Field.getPassword());
+        Pass1Field.setText(null);
+        Pass2Field.setText("");
+        if(!pass1.equals(pass2))
+            JOptionPane.showMessageDialog(null,
+                    "Las Passwords son diferentes\n Intántalo de nuevo",
+                    "Error",JOptionPane.ERROR_MESSAGE);
+        else{
+            RegTextField.setText("SI");
+            RegisterDialog.setVisible(false);
+            LoginButton.setEnabled(true);
+        }
+    }//GEN-LAST:event_RegisterAceptarButtonActionPerformed
+
+    private void Pass1FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pass1FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Pass1FieldActionPerformed
+
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        // TODO add your handling code here:
+        if(!isLogin){
+          LoginDialog.setVisible(true);
+          return;
+        }
+        int retorno= JOptionPane.showConfirmDialog(null,
+                "¿Realmente desea hacer un LogOut?",
+                "LogOut",JOptionPane.YES_NO_OPTION);
+        if(retorno!=0)return;
+        isLogin = false;
+        LoginButton.setText("LogIn");
+        LogTextField.setText("NO");
+    }//GEN-LAST:event_LoginButtonActionPerformed
+
+    private void LoginCancelarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginCancelarButton1ActionPerformed
+        LoginDialog.setVisible(false);
+    }//GEN-LAST:event_LoginCancelarButton1ActionPerformed
+
+    private void LoginAceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAceptarButtonActionPerformed
+        String password = String.valueOf(PasswordField.getPassword());
+        PasswordField.setText(null);
+        if(password.equals(pass1)){
+            LogTextField.setText("SI");
+            isLogin = true;
+            LoginDialog.setVisible(true);
+            LoginButton.setText("LogOut");
+        }
+        else{
+            JOptionPane.showMessageDialog(null,
+                    "La Password es incorrecta\nInténtalo de nuevo",
+                    "Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_LoginAceptarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,12 +411,12 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
     private javax.swing.JButton LoginButton;
     private javax.swing.JButton LoginCancelarButton1;
     private javax.swing.JDialog LoginDialog;
+    private javax.swing.JPasswordField Pass1Field;
     private javax.swing.JLabel Pass1Label;
-    private javax.swing.JTextField Pass1TextField;
+    private javax.swing.JPasswordField Pass2Field;
     private javax.swing.JLabel Pass2Label;
-    private javax.swing.JTextField Pass2TextField;
+    private javax.swing.JPasswordField PasswordField;
     private javax.swing.JLabel PasswordLabel;
-    private javax.swing.JTextField PasswordTextField1;
     private javax.swing.JLabel RegLabel;
     private javax.swing.JTextField RegTextField;
     private javax.swing.JButton RegisterAceptarButton;
@@ -324,7 +424,9 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
     private javax.swing.JButton RegisterCancelarButton;
     private javax.swing.JDialog RegisterDialog;
     // End of variables declaration//GEN-END:variables
-
+    private String pass1;
+    private Boolean isLogin = false;
+    
     private void showCloseDialog() {
         int retorno = JOptionPane.showConfirmDialog(null,
                 "¿Realmente desea salir?",
