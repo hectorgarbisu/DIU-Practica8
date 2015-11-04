@@ -14,16 +14,16 @@ import javax.swing.JOptionPane;
  *
  * @author Héctor Garbisu DIU 2015
  */
-public class Pr8Tarea2Frame extends javax.swing.JFrame {
+public class Pr8Tarea3Frame extends javax.swing.JFrame {
 
     /**
      * Creates new form Pr8Tarea1Frame
      */
-    public Pr8Tarea2Frame() {
+    public Pr8Tarea3Frame() {
         try {
             this.salt = pes.generateSalt();
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Pr8Tarea2Frame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pr8Tarea3Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
         initComponents();
         LoginButton.setEnabled(false);
@@ -329,9 +329,9 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
             try {
                 encPass = pes.getEncryptedPassword(pass2, salt);
             } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(Pr8Tarea2Frame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Pr8Tarea3Frame.class.getName()).log(Level.SEVERE, null, ex);
             } catch (InvalidKeySpecException ex) {
-                Logger.getLogger(Pr8Tarea2Frame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Pr8Tarea3Frame.class.getName()).log(Level.SEVERE, null, ex);
             }
             RegTextField.setText("SI");
             RegisterDialog.setVisible(false);
@@ -372,9 +372,9 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
         try {
             auth = pes.authenticate(password, encPass, salt);
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Pr8Tarea2Frame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pr8Tarea3Frame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvalidKeySpecException ex) {
-            Logger.getLogger(Pr8Tarea2Frame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pr8Tarea3Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (auth) {
             LogTextField.setText("SI");
@@ -399,6 +399,14 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LoginAceptarButtonActionPerformed
 
+    private void showCloseDialog() {
+        int retorno = JOptionPane.showConfirmDialog(null,
+                "¿Realmente desea salir?",
+                "Salir", JOptionPane.YES_NO_OPTION);
+        if (retorno == 0) {
+            System.exit(0);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -416,21 +424,23 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pr8Tarea2Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pr8Tarea3Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pr8Tarea2Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pr8Tarea3Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pr8Tarea2Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pr8Tarea3Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pr8Tarea2Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pr8Tarea3Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pr8Tarea2Frame().setVisible(true);
+                new Pr8Tarea3Frame().setVisible(true);
             }
         });
     }
@@ -465,12 +475,4 @@ public class Pr8Tarea2Frame extends javax.swing.JFrame {
     PasswordEncryptionService pes = new PasswordEncryptionService();
     byte[] salt;
 
-    private void showCloseDialog() {
-        int retorno = JOptionPane.showConfirmDialog(null,
-                "¿Realmente desea salir?",
-                "Salir", JOptionPane.YES_NO_OPTION);
-        if (retorno == 0) {
-            System.exit(0);
-        }
-    }
 }
